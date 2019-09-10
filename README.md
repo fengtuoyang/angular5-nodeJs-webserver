@@ -12,7 +12,7 @@ Angular5框架 + (NodeJs+Express搭建web服务器)
 
 	/server路径下是一个简单的web服务器，模拟后台对接
 
-		在此路径下执行：node build/products_server.js
+		在此路径下执行 node build/products_server.js 启动
 		用nodemon可以自动刷新执行（npm install -g nodemon、nodemon build/products_server.js）
            
 	/server/client是编译合并后的代码
