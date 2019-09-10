@@ -1,0 +1,21 @@
+form{
+  margin-left: 10px;
+}
+div{
+  margin-bottom: 5px;
+}
+ul{
+  margin: 0;
+}
+ul li {
+  margin-bottom: 3px;
+}
+input{
+  border-radius: 4px;
+}
+label{
+  width: 80px;
+}
+.warning{
+  color: red;
+}

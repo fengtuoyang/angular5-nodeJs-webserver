@@ -1,0 +1,33 @@
+<form [formGroup]="formModel" (submit)="onSearch()" novalidate>
+	<div class="form-group">
+		<label for="productTitle">商品名称：</label>
+		<input formControlName="title" type="text" id="productTitle" placeholder="商品名称" class="form-control" [class.hasError]="!formModel.get('title').valid && formModel.get('title').touched" />
+    <div [hidden]="formModel.get('title').valid || formModel.get('title').untouched" class="error">
+      <!--<span [hidden]="!formModel.hasError('required', 'title')">-->
+        <!--商品名称必填项-->
+      <!--</span>-->
+      <span [hidden]="!formModel.hasError('minlength', 'title')">
+        商品名称的长度最少是6
+      </span>
+    </div>
+	</div>
+	<div class="form-group">
+		<label for="productPrice">商品价格：</label>
+		<input formControlName="price" type="text" id="productPrice" placeholder="商品价格" class="form-control" [class.hasError]="!formModel.get('price').valid && formModel.get('price').touched" />
+    <span [hidden]="!formModel.hasError('positiveNumber', 'price') || formModel.get('price').untouched" class="error">
+      {{formModel.getError('positiveNumber', 'price')}}
+    </span>
+	</div>
+	<div class="form-group">
+		<label for="productCategory">商品类别：</label>
+		<select formControlName="category" id="productCategory" class="form-control">
+      <option value="-1">全部分类</option>
+      <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary btn-block">搜索</button>
+	</div>
+</form>
+
+

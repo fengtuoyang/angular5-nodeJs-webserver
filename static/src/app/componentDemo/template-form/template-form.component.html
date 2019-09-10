@@ -1,0 +1,48 @@
+<!--基础版表单-->
+<!--<form #myForm (ngSubmit)="onSubmit(myForm.value)">-->
+  <!--<div>用户名：<input #username ngModel name="username" type="text"/></div>-->
+  <!--<div>手机号：<input #mobile ngModel mobileValidator name="mobile" type="text"/></div>-->
+  <!--<div>邮政编码：<input ngModel name="mail" type="number"/></div>-->
+  <!--<div>密码：<input ngModel name="password" type="password"/></div>-->
+  <!--<div>确认密码：<input ngModel name="pconfirm" type="password"/></div>-->
+  <!--<button type="submit">注册</button>-->
+<!--</form>-->
+<!--<div>-->
+  <!--{{myForm.value | json}}-->
+<!--</div>-->
+<!--<div>-->
+  <!--{{username.value}}-->
+<!--</div>-->
+
+
+<!--完整版表单-->
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
+  <div>用户名：
+    <input #username  ngModel required name="username" type="text" />
+    <span [hidden]="!myForm.form.hasError('required','username')" class="warning">*请输入用户名</span>
+  </div>
+  <div>手机号：
+    <input ngModel mobileValidator name="mobile" type="text" />
+    <span [hidden]="!myForm.form.hasError('mobile','mobile')" class="warning">
+      {{myForm.form.getError('mobile','mobile')}}
+    </span>
+  </div>
+  <div>邮政编码：
+    <input ngModel name="mail" type="number" />
+  </div>
+  <div ngModelGroup="passwordGroup">
+    <div>密码：
+      <input ngModel name="password" type="password" />
+    </div>
+    <div>确认密码：
+      <input ngModel name="pconfirm" type="password" />
+    </div>
+  </div>
+  <button type="submit">注册</button>
+</form>
+<div>
+  {{myForm.value | json}}
+</div>
+<div>
+  {{username.value}}
+</div>

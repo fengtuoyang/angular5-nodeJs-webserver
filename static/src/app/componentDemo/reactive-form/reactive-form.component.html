@@ -1,0 +1,99 @@
+<!--基础版表单-->
+<!--<form [formGroup]="formModel" (ngSubmit)="onSubmit()">-->
+  <!--<div>用户名：<input formControlName="username"></div>-->
+  <!--<div formGroupName="passwordGroup">-->
+    <!--<div>密码：<input type="password" formControlName="password"></div>-->
+    <!--<div>确认密码：<input type="password" formControlName="pconfirm"></div>-->
+  <!--</div>-->
+  <!--<div>手机号：<input formControlName="mobile"></div>-->
+  <!--<div formGroupName="dateRange">-->
+    <!--起始日期：<input type="date" formControlName="from">-->
+    <!--截止日期：<input type="date" formControlName="to">-->
+  <!--</div>-->
+  <!--<div>-->
+    <!--邮箱：-->
+    <!--<ul formArrayName="emails">-->
+      <!--<li *ngFor="let e of formModel.get('emails').controls;let i=index;">-->
+        <!--<input type="text" [formControlName]="i">-->
+      <!--</li>-->
+    <!--</ul>-->
+    <!--<button type="button" (click)="addEmail()">增加Email</button>-->
+  <!--</div>-->
+  <!--<div>-->
+    <!--<button type="submit">保存</button>-->
+  <!--</div>-->
+<!--</form>-->
+
+
+<!--完整版表单-->
+<form [formGroup]="formModel" (ngSubmit)="onSubmit()">
+  <!--用户名username-->
+  <div>
+    <label>用户名：</label>
+    <input formControlName="username">
+    <span class="warning" [hidden]="!(formModel.hasError('required', 'username') && formModel.get('username').touched)">
+      *请填写用户名
+    </span>
+    <span class="warning" [hidden]="!formModel.hasError('minlength', 'username')">
+      *用户名最小两位
+    </span>
+  </div>
+  <!--密码password-->
+  <div formGroupName="passwordGroup">
+    <div>
+      <label>密码：</label>
+      <input type="password" formControlName="password">
+      <span class="warning" [hidden]="!(formModel.hasError('required', ['passwordGroup','password']) && formModel.get('passwordGroup').get('password').touched)">
+        *请输入密码
+      </span>
+      <span class="warning" [hidden]="!formModel.hasError('minlength', ['passwordGroup','password'])">
+        *请输入6位以上的密码
+      </span>
+    </div>
+
+    <div>
+      <label>确认密码：</label>
+      <input type="password" formControlName="pconfirm">
+      <span class="warning" [hidden]="!formModel.hasError('equal','passwordGroup')">
+        {{formModel.getError('equal','passwordGroup') ? formModel.getError('equal','passwordGroup').desc : null}}
+      </span>
+    </div>
+  </div>
+  <!--手机号mobile-->
+  <div>
+    <label>手机号：</label>
+    <input formControlName="mobile">
+    <span class="warning" [hidden]="!formModel.hasError('mobile','mobile')">
+      {{formModel.getError('mobile', 'mobile')}}
+    </span>
+  </div>
+  <!--日期时间段dateRange-->
+  <div formGroupName="dateRange">
+    <div>
+      <label>起始日期：</label>
+      <input type="date" formControlName="from">
+    </div>
+    <div>
+      <label>截止日期：</label>
+      <input type="date" formControlName="to">
+      <span class="warning">
+        {{formModel.getError('date','dateRange')}}
+      </span>
+    </div>
+  </div>
+  <!--邮箱emails-->
+  <div>
+    邮箱：
+    <ul formArrayName="emails">
+      <li *ngFor="let e of formModel.get('emails').controls;let i=index;">
+        <input type="text" [formControlName]="i">
+      </li>
+    </ul>
+    <button type="button" (click)="addEmail()">增加Email</button>
+  </div>
+  <!--提交submit-->
+  <div>
+    <button type="submit">保存</button>
+  </div>
+</form>
+

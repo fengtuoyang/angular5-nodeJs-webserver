@@ -1,0 +1,9 @@
+.swiper-container{
+    width: 100%;
+}
+
+.swiper-slide{
+    position: relative;
+    height: 200px;
+    background: yellow;
+}

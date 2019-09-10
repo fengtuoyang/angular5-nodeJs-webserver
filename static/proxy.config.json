@@ -1,0 +1,8 @@
+{
+  "/ngDemo":{
+    "target": "http://localhost:9000"
+  },
+  "/api": {
+    "target": "http://localhost:9001"
+  }
+}

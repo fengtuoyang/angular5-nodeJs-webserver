@@ -1,0 +1,21 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="cintainer">
+  	<div class="navbar-header">
+  		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-ellapse">
+  			<span class="icon-bar"></span>
+  			<span class="icon-bar"></span>
+  			<span class="icon-bar"></span>
+  		</button>
+  		<a class="navbar-brand" href="#">navbar</a>
+  	</div>
+  	<div class="collapse navbar-collapse navbar-ex1-ellapse">
+  		<ul class="nav navbar-nav">
+  			<li><a [routerLink]="['/']">aboutProduct</a></li>
+  			<li><a [routerLink]="['/aboutMap']">aboutMap</a></li>
+  		</ul>
+      <ul class="nav navbar-nav pull-right regist">
+        <li><a [routerLink]="['/regist']">注册</a></li>
+      </ul>
+  	</div>
+  </div>
+</nav>

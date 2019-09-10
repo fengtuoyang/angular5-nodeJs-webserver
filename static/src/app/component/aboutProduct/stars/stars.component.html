@@ -1,0 +1,11 @@
+<!--
+	1/如何显示一颗星星 glyphicon-star
+	2/如何显示一颗空心星星 glyphicon-star-empty
+	3/如何显示五颗星星 *ngFor
+	4/属性绑定，区分实心和空心星星
+	5/如何将商品信息product.html中的星级评价数值获取到——输入属性
+-->
+<p>
+	<span *ngFor="let star of stars; let i=index" class="glyphicon glyphicon-star" [class.glyphicon-star-empty]="star" (click)="clickStar(i)"></span>
+	<span>{{rating | number:"1.0-2"}}星</span>
+</p>
