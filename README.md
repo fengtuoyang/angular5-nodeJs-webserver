@@ -1,8 +1,6 @@
 # Angular5框架 + NodeJs搭建webserver（知识点汇总demo）
 
-1、基础
-
-2、高德地图
+基础--高德地图
 
 一、目录结构：
 
